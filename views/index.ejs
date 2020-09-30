@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo</title>
+  <style>
+    .list{
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+     <h1>The work i have to Do</h1>
+  </div>
+  
+  <form action="/todo" method="post">
+    <input type="text" name="description">
+    <button type="submit"> GO</button>
+  </form>
+
+ <div class="list">
+   <% todos.forEach(elem =>{ %>
+   <form method="post" action="/todo/<%=elem._id%>/completed">
+    <li>
+      <%= elem.description %> - <%= elem.done %>
+      <button type="submit">DONE</button>
+    </li>
+  </form>
+  <%  }) %>
+ </div>
+
+ <h3>Done</h3>
+
+<div class="list">
+   <% donetodos.forEach(elem =>{ %>
+   <form method="post" action="/todo/<%=elem._id%>/completed">
+    <li>
+      <%= elem.description %> - <%= elem.done %>
+      <button type="submit">Oops</button>
+    </li>
+  </form>
+  <%  }) %>
+ </div>
+
+
+</body>
+</html>
